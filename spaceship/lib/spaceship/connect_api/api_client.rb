@@ -110,6 +110,7 @@ module Spaceship
             req.headers['Content-Type'] = 'application/json'
           end
         end
+        puts(response)
         handle_response(response)
       end
 
