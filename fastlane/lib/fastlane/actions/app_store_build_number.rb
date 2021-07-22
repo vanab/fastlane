@@ -52,7 +52,7 @@ module Fastlane
 
           UI.user_error!("Could not find a live-version of #{params[:app_identifier]} on App Store Connect") unless live_version
           build_nr = live_version.build.version
-          UI.message("#{live_version}")
+          UI.message("#{live_version.build}")
           UI.message("Latest upload for live-version #{live_version.version_string} is build: #{build_nr}")
 
           return OpenStruct.new({ build_nr: build_nr, build_v: live_version.version_string })
