@@ -40,6 +40,7 @@ module Spaceship
           @current_team_id = current_team_id
 
           @client = Faraday.new(hostname, options) do |c|
+            c.response :logger, ::Logger.new(STDOUT), bodies: true
             c.response(:json, content_type: /\bjson$/)
             c.response(:plist, content_type: /\bplist$/)
             c.use(FaradayMiddleware::RelsMiddleware)

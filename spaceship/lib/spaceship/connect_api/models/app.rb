@@ -294,11 +294,11 @@ module Spaceship
         client ||= Spaceship::ConnectAPI
         if limit.nil?
           resps = client.get_app_store_versions(app_id: id, filter: filter, includes: includes, limit: limit, sort: sort).all_pages
-          
+          puts(resps.inspect)
           return resps.flat_map(&:to_models)
         else
           resp = client.get_app_store_versions(app_id: id, filter: filter, includes: includes, limit: limit, sort: sort)
-          
+          puts(resp.inspect)
           return resp.to_models
         end
       end
