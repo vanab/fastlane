@@ -46,9 +46,7 @@ module Spaceship
             c.use(Spaceship::StatsMiddleware)
             c.use(Spaceship::TokenRefreshMiddleware, token)
             c.adapter(Faraday.default_adapter)
-            c.response :logger do | logger |
-              def logger.debug *args; end
-            end
+            c.response :logger, ::Logger.new(STDOUT), bodies: true
 
             if ENV['SPACESHIP_DEBUG']
               # for debugging only
